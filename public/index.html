@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UKK Konversi Nilai - Calvin Samuel S.</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/output.css" />
+
+    <style>
+      .cekbang {
+        border: 1px solid red;
+      }
+
+      @font-face {
+        font-family: "Montserrat";
+        src: url("fonts/Montserrat-VariableFont_wght.ttf");
+      }
+
+      * {
+        font-family: "Montserrat";
+      }
+    </style>
+  </head>
+  <body class="grid h-screen bg-gradient-to-r from-rose-100 to-teal-100">
+    <div
+      class="max-w-6xl p-2 my-auto rounded-lg mx-auto bg-gradient-to-br from-indigo-700 via-violet-700 to-purple-900"
+    >
+      <div class="w-full h-full bg-white px-9 pt-12 py-6">
+        <div class="block md:flex content-center gap-6">
+          <!-- JUDUL -->
+          <div class="my-auto">
+            <h1
+              class="font-extrabold text-2xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-br from-indigo-700 via-violet-700 to-purple-900"
+            >
+              UKK Konversi Nilai
+            </h1>
+            <h1 class="text-base md:text-lg text-violet-600">
+              9622 - Calvin Samuel Simbolon
+            </h1>
+          </div>
+        </div>
+        <hr class="h-px my-4 bg-indigo-500 border-0" />
+        <!-- Input -->
+        <!-- Define the width model within parent div -->
+        <div
+          class="px-8 max-w-xs"
+          x-data="{ width: '' }"
+          x-init="$watch('width', value => { if (value > 100) { width = 100 } if (value == 0) { width = 0 } })"
+        >
+          <form>
+            <div class="w-full grid gap-8">
+              <div class="flex gap-3">
+                <label
+                  for="a"
+                  class="grid content-center font-bold text-indigo-800"
+                  >Input Nilai Anda!</label
+                >
+                <input
+                  type="number"
+                  name="a"
+                  id="a"
+                  x-model="width"
+                  min="0"
+                  max="100"
+                  class="w-16 sm:w-24 text-center border-2 border-violet-200 active:border-violet-700 text-stone-900 px-1 py-0.5 rounded-md bg-white form-input"
+                  onchange="konversi()"
+                />
+              </div>
+
+                <button
+                  type="button"
+                  name="tombol"
+                  id="tombol"
+                  class="flex w-2/3 mx-auto md:hidden py-2 px-4 rounded-md text-stone-50 transition ease-in-out duration-700 bg-violet-700 hover:-transtone-y-1 hover:scale-110 hover:bg-purple-700"
+                  onClick="konversi()"
+                >
+                <p class="text-center mx-auto">
+
+                  Konversi
+                </p>
+                </button>
+
+              <!-- The Result -->
+              <div class="flex justify-center gap-2">
+                <label for="b" class="text-center text-indigo-700"></label>
+                <input
+                  type="text"
+                  name="c"
+                  id="c"
+                  class="bg-inherit w-full text-center font-bold text-indigo-700"
+                  disabled
+                />
+              </div>
+
+              <!-- Progress Bar -->
+
+              <!-- Start Regular version -->
+              <div
+                class="bg-gray-100 border border-violet-400 rounded h-4"
+                role="progressbar"
+                :aria-valuenow="width"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                <div
+                  class="bg-gradient-to-br from-indigo-700 via-violet-700 to-purple-900 rounded h-4 text-center"
+                  :style="`width: ${width}%; transition: width 4s;`"
+                  id="shugora"
+                ></div>
+              </div>
+              <!-- End Regular version -->
+            </div>
+          </form>
+        </div>
+        <!-- ends input -->
+
+        <footer class="text-center mt-5">
+          <div id="copyrightYear" class="text-sm text-indigo-700"></div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Script dari JavaScript -->
+    <script src="script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+  </body>
+</html>
